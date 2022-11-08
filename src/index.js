@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react'
+import apiEndpoints from './api-endpoints.json'
+import ApiEndpoint from './components/ApiEndpoint/ApiEndpoint.js'
+import '../src/Index.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const App = () => {
+  const [elements, setElements] = useState(null)
+
+  useEffect(() => {
+    setElements(apiEndpoints)
+  }, [])
+
+  const array = Object.values(apiEndpoints)
+
+  return (
+    <div>
+      {array.map((element) => (
+        <div className="elements-board">
+          <ApiEndpoint element={element}/>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+

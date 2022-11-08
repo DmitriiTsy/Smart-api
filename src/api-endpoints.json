@@ -1,0 +1,73 @@
+[
+    {
+        "title": "Create new user",
+        "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "POST",
+        "body": [
+        {
+            "name": "email",
+            "type": "email",
+            "max": 24,
+            "min": 3,
+            "required": true
+        }, 
+        {
+            "name": "full-name",
+            "type": "text",
+            "placeholder": "John Doe",
+            "required": true
+        }, 
+        {
+            "name": "phone",
+            "type": "tel"
+        }
+        ] 
+    },
+    {
+        "title": "Get users",
+        "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "GET"
+    },
+    {
+        "title": "Put new user",
+        "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "PUT",
+        "body": [
+        {
+            "id": "3",
+            "name": "name",
+            "type": "text"
+        }, 
+        {
+            "name": "second",
+            "type": "text",
+            "placeholder": "Johasas",
+            "required": true
+        }, 
+        {
+            "name": "email",
+            "type": "email",
+            "placeholder": "email",
+            "required": true
+        }
+        ] 
+    },
+    {
+        "title": "Delete user by id",
+        "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "DELETE",
+        "body": [
+        {
+            "id": "3",
+            "name": "id",
+            "type": "text"
+        }
+        ] 
+    },
+    {
+        "title": "Create new user",
+        "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "ALL"
+    }
+]
+
