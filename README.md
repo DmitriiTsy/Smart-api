@@ -27,6 +27,7 @@ Run
 npm run start 
 ```
 -> to activate the development server.
+![Screen Shot 2022-11-08 at 17 17 11](https://user-images.githubusercontent.com/101737790/200712484-299553c6-6ec6-4b3c-9c99-9b16650a7e76.png)
 
 **Sync example API docs to your project**
 You can generate example API docs (an "API Explorer") from the example API spec in this repo (api-endpoints.json). Then you can test out the GET, POST, PUT, DELETE methods flow from within those API docs.
