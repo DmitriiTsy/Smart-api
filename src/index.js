@@ -1,16 +1,10 @@
 import ReactDOM from 'react-dom';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import apiEndpoints from './api-endpoints.json'
 import ApiEndpoint from './components/ApiEndpoint/ApiEndpoint.js'
-import '../../smart/src/index.css'
+import './index.css'
 
 const App = () => {
-  const [elements, setElements] = useState(null)
-
-  useEffect(() => {
-    setElements(apiEndpoints)
-  }, [])
-
   const array = Object.values(apiEndpoints)
 
   return (
