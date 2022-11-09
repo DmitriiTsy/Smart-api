@@ -1,6 +1,6 @@
 
 **Project's Title**
-API Explorer - is a tool, that lets you tri JsonPlacHolder methods without writing code. This API acts on a fake data however may be modernize to work with real data.
+API Explorer - is a browser-based tool for exploring API endpoints. This tool will accept parameters describing an endpoint (values such as url, method, headers, body, etc) and produce an html component for sending requests to that endpoint
 
 Technical stack: JavaScript, CSS, HTML, React 
 
@@ -8,6 +8,9 @@ Technical stack: JavaScript, CSS, HTML, React
 Application prodives 4 HTTP methods - POST,GET,PUT,DELETE to access [JsonPlaceHolder apui ](https://jsonplaceholder.typicode.com/) and get request for sending data
 
 For this project I used React with components encapsulation and dynamic data change which depeneds on JSON file, providing be user. 
+
+**Project Configuration**
+<img width="920" alt="Screen Shot 2022-11-08 at 17 21 24" src="https://user-images.githubusercontent.com/101737790/200713021-bff9c430-2e11-4d49-97ba-2a6b47c6ddb9.png">
 
 **Project Launch**
 
