@@ -12,8 +12,10 @@ const Transit = ({element}) => {
 
     const [reset, setReset] = useState(false)  //To reset component data
 
-    const apiEndpointUsersUrl = 'https://jsonplaceholder.typicode.com/users'
+    const apiEndpointUsersUrl = element.url
     const [getResult, setGetResult] = useState(null);
+
+    const lastPartOfUrlRequest = apiEndpointUsersUrl.split("/").pop()
 
     const fortmatResponse = (res) => {
         return JSON.stringify(res, null, 2);
@@ -33,7 +35,7 @@ const Transit = ({element}) => {
         console.log(inputDataStore)
       }
 
-    async function getAllUsersArray() {
+    async function getAllElementsArray() {
         try {
           const res = await fetch(apiEndpointUsersUrl);
           if (!res.ok) {
@@ -218,14 +220,14 @@ const Transit = ({element}) => {
         <div className="endpoint-wrapper">
             <div className="endpoint-wrapper-description">
               <div>
-                <div className='endpoint-header'>Get a user by id</div>
+                <div className='endpoint-header'>Get a {lastPartOfUrlRequest} by id</div>
                 <div>Type: {method}</div>
-                <div className='endpoint-path'>Path: /users{'{'}userId{'}'} </div>
+                <div className='endpoint-path'>Path: {lastPartOfUrlRequest}/{'{'}{lastPartOfUrlRequest}id{'}'} </div>
               </div>
               <div>
                 <div className='endpoint-header'>Parameters</div>
                 <div className="endpoint-header__wrapper">
-                  <label className='form-label'>user id</label>
+                  <label className='form-label'>{lastPartOfUrlRequest} id</label>
                   <input className="form-input" onChange={onChangeGetInput} value={reset === true? '': userInput}/>
                 </div>
                 <div className="buttons-wrapper">
@@ -261,14 +263,14 @@ const Transit = ({element}) => {
             <div className="endpoint-wrapper"> 
               <div className="endpoint-wrapper-description">
                 <div>
-                  <div className='endpoint-header'>Put a user by id</div>
-                  <div>Type: {method} a user</div>
-                  <div className='endpoint-path'>Path: /users{'{'}userId{'}'} </div>
+                  <div className='endpoint-header'>Put a {lastPartOfUrlRequest} by id</div>
+                  <div>Type: {method}</div>
+                  <div className='endpoint-path'>Path: {lastPartOfUrlRequest}/{'{'}{lastPartOfUrlRequest}id{'}'} </div>
                 </div>
                 <div>
                   <div className='endpoint-header'>Parameters</div>
                   <div className="endpoint-header__wrapper">
-                    <label className='form-label'>user id</label>
+                    <label className='form-label'>{lastPartOfUrlRequest} id</label>
                     <input className="form-input__put" onChange={onChangePutInput} value={reset === true? '': userPutInput} />
                     {body ? body.map((field, i) => <div 
                     key={i}><Input field={field} method={method} changeHandler={changeHandler} reset={reset}/><p></p></div>) : null}
@@ -306,14 +308,14 @@ const Transit = ({element}) => {
         <div className="endpoint-wrapper"> 
             <div className="endpoint-wrapper-description">
               <div>
-                <div className='endpoint-header'>Delete a user by id</div>
+                <div className='endpoint-header'>Delete a {lastPartOfUrlRequest} by id</div>
                 <div>Type: {method}</div>
-                <div className='endpoint-path'>Path: /users{'{'}userId{'}'} </div>
+                <div className='endpoint-path'>Path: {lastPartOfUrlRequest}/{'{'}{lastPartOfUrlRequest}id{'}'} </div>
               </div>
               <div>
                 <div className='endpoint-header'>Parameters</div>
                 <div className="endpoint-header__wrapper">
-                  <label className='form-label'>user id</label>
+                  <label className='form-label'>{lastPartOfUrlRequest} id</label>
                   <input className="form-control" onChange={onChangeGetInput} value={reset === true? '': userInput}/>
                 </div>
                 <div className="buttons-wrapper">
@@ -349,14 +351,14 @@ const Transit = ({element}) => {
         <div className="endpoint-wrapper">
           <div className="endpoint-wrapper-description">
             <div>
-              <div className='endpoint-header'>Get all users</div>
+              <div className='endpoint-header'>Get all {lastPartOfUrlRequest}</div>
               <div>Type: {method}</div>
-              <div className='endpoint-path'>Path: /users </div>
+              <div className='endpoint-path'>Path: {lastPartOfUrlRequest} </div>
             </div>
             <div>
               <div className='endpoint-header'>Parameters</div>
               <div className="buttons-wrapper">
-                <Button handler={getAllUsersArray} className="element-submit" text="Submit"/>
+                <Button handler={getAllElementsArray} className="element-submit" text="Submit"/>
                 <Button handler={clearInputHandler} className="element-clear" text="Clear"/>
               </div>
             </div>
@@ -388,13 +390,13 @@ const Transit = ({element}) => {
             <div className="endpoint-wrapper">
                 <div className="endpoint-wrapper-description">
                   <div>
-                    <div className='endpoint-header'>Add new user</div>
+                    <div className='endpoint-header'>Add new {lastPartOfUrlRequest}</div>
                     <div>Type: {method}</div>
-                    <div className='endpoint-path'>Path: /users </div>
+                    <div className='endpoint-path'>Path: {lastPartOfUrlRequest} </div>
                   </div>
                   <div>
                       <div className='endpoint-header'>Parameters</div>
-                        <form name="form1" method="get">
+                        <form name="form1">
                             {body ? body.map((field, i) => <div 
                             key={i}><Input field={field} method={method} changeHandler={changeHandler} reset={reset} /><p></p></div>) : null}
                             <div className="buttons-wrapper">

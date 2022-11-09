@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React, { useState, useEffect } from 'react'
 import apiEndpoints from './api-endpoints.json'
 import ApiEndpoint from './components/ApiEndpoint/ApiEndpoint.js'
-import '../src/Index.css'
+import '../../smart/src/index.css'
 
 const App = () => {
   const [elements, setElements] = useState(null)
