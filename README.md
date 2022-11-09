@@ -14,11 +14,19 @@ For this project I used React with components encapsulation and dynamic data cha
 For launch an project you need to:
 
 Clone repository:
+```
 git clone https://github.com/DmitriiTsy/Smart-api
+```
 
 In the command line at the directory containing the cloned repo, run:
-Run npm install
-Run npm run start -> to activate the development server.
+```
+npm install
+```
+Run 
+```
+npm run start 
+```
+-> to activate the development server.
 
 **Sync example API docs to your project**
 You can generate example API docs (an "API Explorer") from the example API spec in this repo (api-endpoints.json). Then you can test out the GET, POST, PUT, DELETE methods flow from within those API docs.
