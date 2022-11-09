@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react'
 import apiEndpoints from './api-endpoints.json'
 import ApiEndpoint from './components/ApiEndpoint/ApiEndpoint.js'
-import './index.css'
+import '../../smart/src/index.css'
 
 const App = () => {
   const array = Object.values(apiEndpoints)
