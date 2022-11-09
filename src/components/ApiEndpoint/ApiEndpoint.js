@@ -214,8 +214,47 @@ const Transit = ({element}) => {
       setUserPutInput(event.target.value);
       setReset(false)  
     }
-  
-    if (method === 'GET') {
+    
+    if (element.title === 'All')  {
+      return (
+        <div className="endpoint-wrapper">
+          <div className="endpoint-wrapper-description">
+            <div>
+              <div className='endpoint-header'>Get all {lastPartOfUrlRequest}</div>
+              <div>Type: {method}</div>
+              <div className='endpoint-path'>Path: {lastPartOfUrlRequest} </div>
+            </div>
+            <div>
+              <div className='endpoint-header'>Parameters</div>
+              <div className="buttons-wrapper">
+                <Button handler={getAllElementsArray} className="element-submit" text="Submit"/>
+                <Button handler={clearInputHandler} className="element-clear" text="Clear"/>
+              </div>
+            </div>
+          </div>
+          <div> Responses:
+                    <pre>
+                        {getResult && 
+                        <div className='response-form-wrapper'>
+                          <div>
+                            <div className='endpoint-header'>Code</div>
+                            {responseStatus}
+                          </div>
+                          <div>
+                            <div className='endpoint-header'>Operation</div>
+                            <div className="response-form"> 
+                              <pre>
+                                {getResult}
+                              </pre>
+                            </div>
+                          </div>
+                        </div>
+                         }
+                    </pre>
+           </div>
+      </div>
+      )
+    } else if (method === 'GET') {
         return (
         <div className="endpoint-wrapper">
             <div className="endpoint-wrapper-description">
@@ -346,46 +385,7 @@ const Transit = ({element}) => {
               </div>
         </div>
         )
-    } else if (method === 'ALL') {
-      return (
-        <div className="endpoint-wrapper">
-          <div className="endpoint-wrapper-description">
-            <div>
-              <div className='endpoint-header'>Get all {lastPartOfUrlRequest}</div>
-              <div>Type: {method}</div>
-              <div className='endpoint-path'>Path: {lastPartOfUrlRequest} </div>
-            </div>
-            <div>
-              <div className='endpoint-header'>Parameters</div>
-              <div className="buttons-wrapper">
-                <Button handler={getAllElementsArray} className="element-submit" text="Submit"/>
-                <Button handler={clearInputHandler} className="element-clear" text="Clear"/>
-              </div>
-            </div>
-          </div>
-          <div> Responses:
-                    <pre>
-                        {getResult && 
-                        <div className='response-form-wrapper'>
-                          <div>
-                            <div className='endpoint-header'>Code</div>
-                            {responseStatus}
-                          </div>
-                          <div>
-                            <div className='endpoint-header'>Operation</div>
-                            <div className="response-form"> 
-                              <pre>
-                                {getResult}
-                              </pre>
-                            </div>
-                          </div>
-                        </div>
-                         }
-                    </pre>
-           </div>
-      </div>
-      )
-    }
+    } 
     return (
             <div className="endpoint-wrapper">
                 <div className="endpoint-wrapper-description">

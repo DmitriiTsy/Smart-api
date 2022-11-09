@@ -65,9 +65,9 @@
         ] 
     },
     {
-        "title": "Create new user",
+        "title": "All",
         "url": "https://jsonplaceholder.typicode.com/users",
-        "method": "ALL"
+        "method": "GET"
     }
 ]
 
