@@ -1,0 +1,149 @@
+@mixin textBorderCenter {
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+}
+
+@mixin flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+$buttonColor: #61AFFE;
+$submitButtonColor: #61AFFE;
+$clearButtonColor: #FBA12F;
+
+@mixin buttonsSize($buttonsColor) {
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    padding: 4px;
+    width: 64px;
+    cursor: pointer;
+    background-color: $buttonsColor
+}
+
+.getModal-wrapper {
+    height: 36px;
+    width: 100%;
+    cursor: pointer;
+    background-color:#ECF3FB; 
+    border-radius: 4px;
+    border: 1px solid blue;
+    display: flex;
+    gap: 8px;
+    flex-direction: row;
+}
+
+.get-endpoint-wrapper {
+    background-color: #ECF3FB; 
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid $buttonColor
+}
+
+.getModal-button {
+    width: 60px;
+    height: 20px;
+    background-color: $buttonColor;
+    padding: 4px;
+    @include textBorderCenter();
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 4px;
+}
+
+.getModal-text {
+    height: 20px;
+    padding: 4px;
+    @include textBorderCenter();
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 4px;
+}
+
+.getModal-hint {
+    height: 20px;
+    padding: 4px;
+    @include textBorderCenter();
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 4px;
+    color: grey;
+}
+
+.response-form {
+    background-color: grey;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    margin-top: 8px;
+}
+
+.element-submit {
+    color: white;
+    @include buttonsSize($submitButtonColor)
+}
+
+.element-clear {
+    @include buttonsSize($clearButtonColor)
+}
+
+.form-control {
+    border-radius: 4px;
+    border: 0.5px solid black;
+}
+
+.buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding-top: 8px;
+}
+
+.endpoint-path {
+    color: grey;
+}
+
+.endpoint-wrapper-description {
+    @include flexRow();
+    gap: 24px;
+}
+
+.endpoint-header {
+    border-bottom:0.5px solid black;
+}
+
+.endpoint-header__wrapper {
+    @include flexColumn();
+    gap: 4px;
+}
+
+.form-label {
+    color: grey;
+} 
+
+.form-input {
+    width: 150px;
+    border-radius: 4px;
+    border: 0.5px solid black;
+}
+
+.form-input__put {
+    width: 150px;
+    border-radius: 4px;
+    border: 0.5px solid black;
+    margin-bottom: 16px;
+}
+
+.response-form-wrapper {
+    @include flexRow();
+    gap: 24px;
+}
+

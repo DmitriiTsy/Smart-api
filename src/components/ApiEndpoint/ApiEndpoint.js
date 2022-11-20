@@ -1,20 +1,117 @@
-import React, { useState } from 'react'
-import Input from '../Input/Input.js'
-import Button from '../Button/Button'
-import '../ApiEndpoint/ApiEndpoint.css'
+import React, { useReducer } from 'react'
+import All from '../ALL/All.js'
+import Get from '../Methods/GET/Get.js'
+import Put from '../Methods/PUT/Put.js'
+import Delete from '../Methods/DELETE/Delete.js'
+import Post from '../Methods/POST/Post.js'
+import ApiContext from '../Context/ApiContext.js'
+
+const initialState = {
+  userInput: '',
+  userPutInput: '',
+  responseStatus: '',
+  reset: false,
+  getResult: null,
+  put: false,
+  get: false,
+  deletes: false,
+  post: false,
+  all: false
+}
+
+const ACTIONS = {
+  USER_INPUT: 'userInput',
+  USER_PUT_INPUT: 'userPutInput',
+  RESPONSE_STATUS: 'responseStatus',
+  RESET: 'reset',
+  GET_RESULT: 'getResult',
+  PUT: 'put',
+  GET: 'get',
+  DELETES: 'delete',
+  POST: 'post',
+  ALL: 'all'
+}
+
+const reducer = (state, action) => {
+  switch(action.type) {
+    case ACTIONS.USER_INPUT: {
+      return {
+        ...state,
+        userInput: action.payload,
+      }
+    }
+    case ACTIONS.USER_PUT_INPUT: {
+      return {
+        ...state,
+        userPutInput: action.payload,
+      }
+    }
+    case ACTIONS.RESPONSE_STATUS: {
+      return {
+        ...state,
+        responseStatus: action.payload,
+      }
+    }
+    case ACTIONS.RESET: {
+      return {
+        ...state,
+        reset: action.payload,
+      }
+    }
+    case ACTIONS.GET_RESULT: {
+      return {
+        ...state,
+        getResult: action.payload,
+      }
+    }
+    case ACTIONS.GET: {
+      return {
+        ...state,
+        getResult: action.payload,
+      }
+    }
+    case ACTIONS.PUT: {
+      return {
+        ...state,
+        getResult: action.payload,
+      }
+    }
+    case ACTIONS.DELETES: {
+      return {
+        ...state,
+        getResult: action.payload,
+      }
+    }
+    case ACTIONS.POST: {
+      return {
+        ...state,
+        getResult: action.payload,
+      }
+    }
+    case ACTIONS.ALL: {
+      return {
+        ...state,
+        getResult: action.payload,
+      }
+    }
+    default: {
+      return state
+    }
+  }
+}
 
 const Transit = ({element}) => {
+    const [state, dispatch] = useReducer(reducer, initialState)
+    
+    const {
+      userInput, 
+      userPutInput, 
+      responseStatus, 
+      reset, 
+      getResult,
+    } = state;
     const {body, method} = element ?? {}
-    const [userInput, setUserInput] = useState('') 
-    const [userPutInput, setUserPutInput] = useState('')
-
-    const [responseStatus, setResponseStatus] = useState('')
-
-    const [reset, setReset] = useState(false)  //To reset component data
-
     const apiEndpointUsersUrl = element.url
-    const [getResult, setGetResult] = useState(null);
-
     const lastPartOfUrlRequest = apiEndpointUsersUrl.split("/").pop()
 
     const fortmatResponse = (res) => {
@@ -29,8 +126,8 @@ const Transit = ({element}) => {
       id: '',
     }
 
-      const changeHandler = (type, event) => {    
-        setReset(false)       
+      const changeHandler = (type, event) => {   
+        dispatch({ type: ACTIONS.RESET, payload: false })      
         inputDataStore[type] = event.target.value
         console.log(inputDataStore)
       }
@@ -43,7 +140,7 @@ const Transit = ({element}) => {
             throw new Error(message);
           }
           const data = await res.json();
-          setResponseStatus(res.status)
+          dispatch({ type: ACTIONS.RESPONSE_STATUS, payload: res.status })
           const result = {
             status: res.status + "-" + res.statusText,
             headers: {
@@ -53,10 +150,9 @@ const Transit = ({element}) => {
             length: res.headers.get("Content-Length"),
             data: data,
           };
-    
-          setGetResult(fortmatResponse(result));
+          dispatch({ type: ACTIONS.GET_RESULT, payload: fortmatResponse(result) })
         } catch (err) {
-          setGetResult(err.message);
+          dispatch({ type: ACTIONS.GET_RESULT, payload: err.message })
         }
       }
 
@@ -74,7 +170,7 @@ const Transit = ({element}) => {
             }
 
             const data = await res.json();
-            setResponseStatus(res.status)
+            dispatch({ type: ACTIONS.RESPONSE_STATUS, payload: res.status })
             const result = {
               data: data,
               status: res.status,
@@ -84,9 +180,9 @@ const Transit = ({element}) => {
                 "Content-Length": res.headers.get("Content-Length"),
               },
             };
-            setGetResult(fortmatResponse(result));
+            dispatch({ type: ACTIONS.GET_RESULT, payload: fortmatResponse(result) })
           } catch (err) {
-            setGetResult(err.message);
+            dispatch({ type: ACTIONS.GET_RESULT, payload: err.message })
           }
         }
     }
@@ -115,7 +211,7 @@ const Transit = ({element}) => {
             }
 
             const data = await res.json();
-            setResponseStatus(res.status)
+            dispatch({ type: ACTIONS.RESPONSE_STATUS, payload: res.status })
             const result = {
               status: res.status + "-" + res.statusText,
               headers: {
@@ -124,9 +220,9 @@ const Transit = ({element}) => {
               },
               data: data,
             };
-            setGetResult(fortmatResponse(result));
+            dispatch({ type: ACTIONS.GET_RESULT, payload: fortmatResponse(result) });
           } catch (err) {
-            setGetResult(err.message);
+            dispatch({ type: ACTIONS.GET_RESULT, payload: err.message })
           }
         }
 
@@ -156,7 +252,7 @@ const Transit = ({element}) => {
                 }
         
                 const data = await res.json();
-                setResponseStatus(res.status)
+                dispatch({ type: ACTIONS.RESPONSE_STATUS, payload: res.status })
                 const result = {
                   status: res.status + "-" + res.statusText,
                   headers: {
@@ -166,9 +262,9 @@ const Transit = ({element}) => {
                   data: data,
                 };
         
-                setGetResult(fortmatResponse(result));
+                dispatch({ type: ACTIONS.GET_RESULT, payload: fortmatResponse(result) });
               } catch (err) {
-                setGetResult(err.message);
+                dispatch({ type: ACTIONS.GET_RESULT, payload: err.message })
               }
           }
 
@@ -182,252 +278,68 @@ const Transit = ({element}) => {
                 });
         
                 const data = await res.json();
-                setResponseStatus(res.status)
+                dispatch({ type: ACTIONS.RESPONSE_STATUS, payload: res.status })
                 const result = {
                   status: res.status + "-" + res.statusText,
                   headers: { "Content-Type": res.headers.get("Content-Type") },
                   data: data,
                 };
         
-                setGetResult(fortmatResponse(result));
+                dispatch({ type: ACTIONS.GET_RESULT, payload: fortmatResponse(result) });
               } catch (err) {
-                setGetResult(err.message);
+                dispatch({ type: ACTIONS.GET_RESULT, payload: err.message })
               }
             
           }
 
     const clearInputHandler = (event) => {
         event.preventDefault();
-        setGetResult(null);
-        setReset(true)
-        setUserPutInput('')
-        setUserInput('')
-        setResponseStatus('')
+        dispatch({ type: ACTIONS.GET_RESULT, payload: null });
+        dispatch({ type: ACTIONS.RESET, payload: true })
+        dispatch({ type: ACTIONS.USER_PUT_INPUT, payload: '' });
+        dispatch({ type: ACTIONS.USER_INPUT, payload: '' })
+        dispatch({ type: ACTIONS.RESPONSE_STATUS, payload: '' })
     }
 
     const onChangeGetInput = (event) => {    
-      setUserInput(event.target.value)
-      setReset(false)       
+      dispatch({ type: ACTIONS.USER_INPUT, payload: event.target.value })
+      dispatch({ type: ACTIONS.RESET, payload: false })       
     }
 
     const onChangePutInput = (event) => {
-      setUserPutInput(event.target.value);
-      setReset(false)  
+      dispatch({ type: ACTIONS.USER_PUT_INPUT, payload: event.target.value });
+      dispatch({ type: ACTIONS.RESET, payload: false })      
     }
-    
-    if (element.title === 'All')  {
+
       return (
-        <div className="endpoint-wrapper">
-          <div className="endpoint-wrapper-description">
-            <div>
-              <div className='endpoint-header'>Get all {lastPartOfUrlRequest}</div>
-              <div>Type: {method}</div>
-              <div className='endpoint-path'>Path: {lastPartOfUrlRequest} </div>
-            </div>
-            <div>
-              <div className='endpoint-header'>Parameters</div>
-              <div className="buttons-wrapper">
-                <Button handler={getAllElementsArray} className="element-submit" text="Submit"/>
-                <Button handler={clearInputHandler} className="element-clear" text="Clear"/>
-              </div>
-            </div>
-          </div>
-          <div> Responses:
-                    <pre>
-                        {getResult && 
-                        <div className='response-form-wrapper'>
-                          <div>
-                            <div className='endpoint-header'>Code</div>
-                            {responseStatus}
-                          </div>
-                          <div>
-                            <div className='endpoint-header'>Operation</div>
-                            <div className="response-form"> 
-                              <pre>
-                                {getResult}
-                              </pre>
-                            </div>
-                          </div>
-                        </div>
-                         }
-                    </pre>
-           </div>
-      </div>
-      )
-    } else if (method === 'GET') {
-        return (
-        <div className="endpoint-wrapper">
-            <div className="endpoint-wrapper-description">
-              <div>
-                <div className='endpoint-header'>Get a {lastPartOfUrlRequest} by id</div>
-                <div>Type: {method}</div>
-                <div className='endpoint-path'>Path: {lastPartOfUrlRequest}/{'{'}{lastPartOfUrlRequest}id{'}'} </div>
-              </div>
-              <div>
-                <div className='endpoint-header'>Parameters</div>
-                <div className="endpoint-header__wrapper">
-                  <label className='form-label'>{lastPartOfUrlRequest} id</label>
-                  <input className="form-input" onChange={onChangeGetInput} value={reset === true? '': userInput}/>
-                </div>
-                <div className="buttons-wrapper">
-                    <Button handler={getUserByIdHandler} className="element-submit" text="Submit" disabled={userInput? false: true}/>
-                    <Button handler={clearInputHandler} className="element-clear" text="Clear" disabled={userInput? false: true}/>
-                </div>
-              </div>
-            </div>
-            <div> Responses:
-                    <pre>
-                        {getResult && 
-                        <div className='response-form-wrapper'>
-                          <div>
-                            <div className='endpoint-header'>Code</div>
-                            {responseStatus}
-                          </div>
-                          <div>
-                            <div className='endpoint-header'>Operation</div>
-                            <div className="response-form"> 
-                              <pre>
-                                {getResult}
-                              </pre>
-                            </div>
-                          </div>
-                        </div>
-                         }
-                    </pre>
-              </div>
-        </div>
+        <ApiContext.Provider 
+          value={{
+          method, 
+          lastPartOfUrlRequest,
+          getAllElementsArray,
+          putNewUserByIdHandler,
+          clearInputHandler,
+          getResult,
+          responseStatus,
+          getUserByIdHandler,
+          onChangeGetInput,
+          onChangePutInput,
+          deleteUserByIdHandler,
+          reset,
+          userInput,
+          userPutInput,
+          changeHandler,
+          body,
+          postNewUserHandler
+        }}>
+          {element.title === 'All' && method === 'GET' ? <All/> : ''}
+          {method === 'GET' && element.title !== 'All' ? <Get/> : ''}
+          {method === 'PUT'? <Put/> : ''}
+          {method === 'DELETE'? <Delete/> : ''}
+          {method === 'POST'? <Post/> : ''}
+        </ApiContext.Provider>
         )
-    } else if (method === 'PUT') {
-        return (
-            <div className="endpoint-wrapper"> 
-              <div className="endpoint-wrapper-description">
-                <div>
-                  <div className='endpoint-header'>Put a {lastPartOfUrlRequest} by id</div>
-                  <div>Type: {method}</div>
-                  <div className='endpoint-path'>Path: {lastPartOfUrlRequest}/{'{'}{lastPartOfUrlRequest}id{'}'} </div>
-                </div>
-                <div>
-                  <div className='endpoint-header'>Parameters</div>
-                  <div className="endpoint-header__wrapper">
-                    <label className='form-label'>{lastPartOfUrlRequest} id</label>
-                    <input className="form-input__put" onChange={onChangePutInput} value={reset === true? '': userPutInput} />
-                    {body ? body.map((field, i) => <div 
-                    key={i}><Input field={field} method={method} changeHandler={changeHandler} reset={reset}/><p></p></div>) : null}
-                  </div>
-                  <div className="buttons-wrapper">
-                    <Button handler={putNewUserByIdHandler} className="element-submit" text="Submit" disabled={userPutInput? false: true}/>
-                    <Button handler={clearInputHandler} className="element-clear" text="Clear" disabled={userPutInput? false: true}/>
-                </div>
-                </div>
-              </div>
-              <div> Responses:
-                    <pre>
-                        {getResult && 
-                        <div className='response-form-wrapper'>
-                          <div>
-                            <div className='endpoint-header'>Code</div>
-                            {responseStatus}
-                          </div>
-                          <div>
-                            <div className='endpoint-header'>Operation</div>
-                            <div className="response-form"> 
-                              <pre>
-                                {getResult}
-                              </pre>
-                            </div>
-                          </div>
-                        </div>
-                         }
-                    </pre>
-               </div>
-        </div>
-        )
-    } else if (method === 'DELETE') {
-      return (
-        <div className="endpoint-wrapper"> 
-            <div className="endpoint-wrapper-description">
-              <div>
-                <div className='endpoint-header'>Delete a {lastPartOfUrlRequest} by id</div>
-                <div>Type: {method}</div>
-                <div className='endpoint-path'>Path: {lastPartOfUrlRequest}/{'{'}{lastPartOfUrlRequest}id{'}'} </div>
-              </div>
-              <div>
-                <div className='endpoint-header'>Parameters</div>
-                <div className="endpoint-header__wrapper">
-                  <label className='form-label'>{lastPartOfUrlRequest} id</label>
-                  <input className="form-control" onChange={onChangeGetInput} value={reset === true? '': userInput}/>
-                </div>
-                <div className="buttons-wrapper">
-                    <Button handler={deleteUserByIdHandler} className="element-submit" text="Delete" disabled={userInput? false: true}/>
-                    <Button handler={clearInputHandler} className="element-clear" text="Clear" disabled={userInput? false: true}/>
-                </div>
-              </div>
-            </div>
-            <div> Responses:
-                    <pre>
-                        {getResult && 
-                        <div className='response-form-wrapper'>
-                          <div>
-                            <div className='endpoint-header'>Code</div>
-                            {responseStatus}
-                          </div>
-                          <div>
-                            <div className='endpoint-header'>Operation</div>
-                            <div className="response-form"> 
-                              <pre>
-                                {getResult}
-                              </pre>
-                            </div>
-                          </div>
-                        </div>
-                         }
-                    </pre>
-              </div>
-        </div>
-        )
-    } 
-    return (
-            <div className="endpoint-wrapper">
-                <div className="endpoint-wrapper-description">
-                  <div>
-                    <div className='endpoint-header'>Add new {lastPartOfUrlRequest}</div>
-                    <div>Type: {method}</div>
-                    <div className='endpoint-path'>Path: {lastPartOfUrlRequest} </div>
-                  </div>
-                  <div>
-                      <div className='endpoint-header'>Parameters</div>
-                        <form name="form1">
-                            {body ? body.map((field, i) => <div 
-                            key={i}><Input field={field} method={method} changeHandler={changeHandler} reset={reset} /><p></p></div>) : null}
-                            <div className="buttons-wrapper">
-                              <Button handler={postNewUserHandler} className="element-submit" text="Submit" />
-                              <Button handler={clearInputHandler} className="element-clear" text="Clear" />
-                            </div>
-                        </form>
-                  </div>
-                </div>
-                <div> Responses:
-                    <pre>
-                        {getResult && 
-                        <div className='response-form-wrapper'>
-                          <div>
-                            <div className='endpoint-header'>Code</div>
-                            {responseStatus}
-                          </div>
-                          <div>
-                            <div className='endpoint-header'>Operation</div>
-                            <div className="response-form"> 
-                              <pre>
-                                {getResult}
-                              </pre>
-                            </div>
-                          </div>
-                        </div>
-                         }
-                    </pre>
-                </div>
-            </div>
-    )
+
 }
  
 export default Transit

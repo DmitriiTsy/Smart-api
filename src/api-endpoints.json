@@ -12,7 +12,7 @@
             "required": true
         }, 
         {
-            "name": "full-name",
+            "name": "full name",
             "type": "text",
             "placeholder": "John Doe",
             "required": true
@@ -67,6 +67,20 @@
     {
         "title": "All",
         "url": "https://jsonplaceholder.typicode.com/users",
+        "method": "GET"
+    },
+    {
+        "postId": 1,
+        "id": 1,
+        "method": "GET",
+        "url": "https://jsonplaceholder.typicode.com/posts",
+        "name": "id labore ex et quam laborum",
+        "email": "Eliseo@gardner.biz",
+        "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+    },
+    {
+        "title": "All",
+        "url": "https://jsonplaceholder.typicode.com/posts",
         "method": "GET"
     }
 ]
