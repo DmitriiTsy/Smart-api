@@ -70,27 +70,6 @@
   margin-top: 8px;
 }
 
-.element-submit {
-  background-color: #61AFFE;
-  color: white;
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-}
-
-.element-clear {
-  background-color: #FBA12F;
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-}
-
 .form-control {
   border-radius: 4px;
   border: 0.5px solid black;
@@ -163,27 +142,6 @@
       -ms-flex-direction: row;
           flex-direction: row;
   gap: 24px;
-}
-
-.element-submit {
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #61AFFE;
-  color: white;
-}
-
-.element-clear {
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #FFC107;
 }
 
 .form-label {
@@ -301,27 +259,6 @@ input:valid {
   padding: 8px;
   color: white;
   margin-top: 8px;
-}
-
-.element-submit {
-  color: white;
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #61AFFE;
-}
-
-.element-clear {
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #FBA12F;
 }
 
 .form-control {
@@ -471,27 +408,6 @@ input:valid {
   margin-top: 8px;
 }
 
-.element-submit {
-  color: white;
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #61AFFE;
-}
-
-.element-clear {
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #FBA12F;
-}
-
 .form-control {
   border-radius: 4px;
   border: 0.5px solid black;
@@ -637,27 +553,6 @@ input:valid {
   padding: 8px;
   color: white;
   margin-top: 8px;
-}
-
-.element-submit {
-  color: white;
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #61AFFE;
-}
-
-.element-clear {
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #FBA12F;
 }
 
 .form-control {
@@ -807,27 +702,6 @@ input:valid {
   margin-top: 8px;
 }
 
-.element-submit {
-  color: white;
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #61AFFE;
-}
-
-.element-clear {
-  border-radius: 4px;
-  border: none;
-  font-size: 16px;
-  padding: 4px;
-  width: 64px;
-  cursor: pointer;
-  background-color: #FBA12F;
-}
-
 .form-control {
   border-radius: 4px;
   border: 0.5px solid black;
@@ -925,5 +799,26 @@ input:valid {
   font-size: 36px;
   margin: 0;
   text-align: center;
+}
+
+.element-submit {
+  color: white;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  padding: 4px;
+  width: 64px;
+  cursor: pointer;
+  background-color: #61AFFE;
+}
+
+.element-clear {
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  padding: 4px;
+  width: 64px;
+  cursor: pointer;
+  background-color: #FBA12F;
 }
 /*# sourceMappingURL=main.css.map */

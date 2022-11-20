@@ -1,6 +1,5 @@
 @import 'layout/All';
 @import 'layout/ApiEndpoint';
-@import 'layout/Button';
 @import 'layout/Context';
 @import 'layout/Input';
 @import 'layout/Delete';
@@ -10,4 +9,6 @@
 
 @import 'pages/index';
 
-@import 'abstracts/mixins'
+@import 'abstracts/mixins';
+
+@import 'components/buttons';

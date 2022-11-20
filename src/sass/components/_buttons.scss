@@ -1,0 +1,21 @@
+@mixin buttonsSize($buttonsColor) {
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    padding: 4px;
+    width: 64px;
+    cursor: pointer;
+    background-color: $buttonsColor
+}
+
+$submitButtonColor: #61AFFE;
+$clearButtonColor: #FBA12F;
+
+.element-submit {
+    color: white;
+    @include buttonsSize($submitButtonColor)
+}
+
+.element-clear {
+    @include buttonsSize($clearButtonColor)
+}

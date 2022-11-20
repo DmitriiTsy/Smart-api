@@ -15,18 +15,6 @@
 }
 
 $buttonColor: #61AFFE;
-$submitButtonColor: #61AFFE;
-$clearButtonColor: #FBA12F;
-
-@mixin buttonsSize($buttonsColor) {
-    border-radius: 4px;
-    border: none;
-    font-size: 16px;
-    padding: 4px;
-    width: 64px;
-    cursor: pointer;
-    background-color: $buttonsColor
-}
 
 .getModal-wrapper {
     height: 36px;
@@ -84,15 +72,6 @@ $clearButtonColor: #FBA12F;
     padding: 8px;
     color: white;
     margin-top: 8px;
-}
-
-.element-submit {
-    color: white;
-    @include buttonsSize($submitButtonColor)
-}
-
-.element-clear {
-    @include buttonsSize($clearButtonColor)
 }
 
 .form-control {
